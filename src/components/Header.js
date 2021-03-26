@@ -1,5 +1,5 @@
 import React from 'react'
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
  const  Header= props =>{
      const {branding} = props;
     return (
@@ -24,13 +24,13 @@ import React from 'react'
 Header.defaultProps = {
     branding : "My App"
 };
-// Header.PropTypes = {
-//     branding :PropTypes.object.isRequired
-// }
-
-const headingStyle = {
-    color:'green',
-    fontSize:'50px'
+Header.propTypes = {
+    branding :PropTypes.string.isRequired
 }
+
+// const headingStyle = {
+//     color:'green',
+//     fontSize:'50px'
+// }
 
 export default Header;
