@@ -5,6 +5,7 @@ import {Consumer } from '../Context';
 class Contacts extends Component {
 
 
+
     render() {
 
         return (
@@ -17,7 +18,6 @@ class Contacts extends Component {
                         <Contact
                         key = {contact.id}
                         contact={contact} 
-                      
                         />))}
                     </React.Fragment>
                     )
