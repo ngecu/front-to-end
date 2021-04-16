@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import TextInputGroup from '../layout/TextInputGroup'
 class AddContacts extends Component {
     state = {
         name: '',
@@ -13,7 +13,7 @@ class AddContacts extends Component {
     }
 
     onSubmit = (e)=>{
-        e.preventDefault();
+        // e.preventDefault();
         console.log(this.state)
     }
     render() {
@@ -24,43 +24,34 @@ class AddContacts extends Component {
                    <div className="card-header">Add Contact</div>
                    <div className="card-body">
                        <form onSubmit={this.onSubmit}>
-                           <div className="form-group">
-                               <label htmlFor="name">Name</label>
-                               <input 
-                               type="text" 
-                               name="name" 
-                               className="form-control form-control-lg" 
-                               placeholder="Enter Name..."
-                               value = {name} 
-                               onChange={this.onChange}
+                         <TextInputGroup
+                         
+                         label="Name"
+                         name="name"
+                         placeholder="Enter Name"
+                         value={name}
+                         onChange={this.onChange}
+                         />
 
-                               id=""/>
-                           </div>
-
-                           <div className="form-group">
-                               <label htmlFor="email">Email</label>
-                               <input 
-                               type="email" 
-                               name="email" 
-                               className="form-control form-control-lg" 
-                               placeholder="Enter Email..." 
-                               value = {email}
-                               onChange={this.onChange}
-                               id=""/>
-                           </div>
-
-                           <div className="form-group">
-                               <label htmlFor="phone">Phone</label>
-                               <input 
-                               type="text" 
-                               name="phone" 
-                               className="form-control form-control-lg" 
-                               placeholder="Enter Phone..." 
-                               value = {phone}
-                               onChange={this.onChange}
-
-                               id=""/>
-                           </div>
+<TextInputGroup
+                         
+                         label="Email"
+                         name="email"
+                         type="email"
+                         placeholder="Enter Email"
+                         value={email}
+                         onChange={this.onChange}
+                         />
+                
+                <TextInputGroup
+                         
+                         label="Phone"
+                         name="phone"
+                        
+                         placeholder="Enter Phone"
+                         value={phone}
+                         onChange={this.onChange}
+                         />
                            <input type="submit" value="Add Contact" className="btn btn-light btn-block"/>
                        </form>
                    </div>
