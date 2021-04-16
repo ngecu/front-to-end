@@ -6,7 +6,16 @@ class AddContacts extends Component {
         email: '',
         phone:''
     }
-    
+
+
+    onChange = (e) => {
+        this.setState({[e.target.name]:e.target.value})
+    }
+
+    onSubmit = (e)=>{
+        e.preventDefault();
+        console.log(this.state)
+    }
     render() {
         const {name,email,phone} = this.state
         return (
@@ -14,7 +23,7 @@ class AddContacts extends Component {
                <div className="card mb-3">
                    <div className="card-header">Add Contact</div>
                    <div className="card-body">
-                       <form>
+                       <form onSubmit={this.onSubmit}>
                            <div className="form-group">
                                <label htmlFor="name">Name</label>
                                <input 
@@ -23,6 +32,8 @@ class AddContacts extends Component {
                                className="form-control form-control-lg" 
                                placeholder="Enter Name..."
                                value = {name} 
+                               onChange={this.onChange}
+
                                id=""/>
                            </div>
 
@@ -34,6 +45,7 @@ class AddContacts extends Component {
                                className="form-control form-control-lg" 
                                placeholder="Enter Email..." 
                                value = {email}
+                               onChange={this.onChange}
                                id=""/>
                            </div>
 
@@ -45,6 +57,8 @@ class AddContacts extends Component {
                                className="form-control form-control-lg" 
                                placeholder="Enter Phone..." 
                                value = {phone}
+                               onChange={this.onChange}
+
                                id=""/>
                            </div>
                            <input type="submit" value="Add Contact" className="btn btn-light btn-block"/>
