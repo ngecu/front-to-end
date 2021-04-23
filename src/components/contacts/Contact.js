@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './contact.css'
-import {Consumer} from '../Context'
+import {Consumer} from '../../Context'
 
  class Contact extends Component {
 
