@@ -1,35 +1,20 @@
 import React, { Component } from 'react'
 
  class AddContact extends Component {
-     constructor(props){
-         super(props);
-
-         this.nameInput = React.createRef();
-         this.emailInput = React.createRef();
-         this.phoneInput = React.createRef();
-
-
+     state = {
+         name : '',
+         email: '',
+         phone: ''
      }
- 
+
+     onChange = (e) => this.setState({[e.target.name]:e.target.value})
+
      onSubmit = (e) => {
          e.preventDefault();
-         const contact = {
-             name:this.nameInput.current.value,
-             email:this.emailInput.current.value,
-             phone:this.phoneInput.current.value,
-
-         }
-
-         console.log(contact)
-     }
-
-     static defaultProps = {
-         name : 'Ngecu',
-         email : 'ngecu16@gmail.com',
-         phone : '0707583092'
+         console.log(this.state)
      }
     render() {
-         const {name,email,phone} = this.props;
+        const {name,email,phone} = this.state;
         return (
             <div className="card mb-3 ">
                 <div className="card-header">
@@ -44,8 +29,8 @@ import React, { Component } from 'react'
                             placeholder="Enter Name ..." 
                             name="name" 
                             id=""
-                            defaultValue ={name}
-                            ref={this.nameInput}
+                            value ={name}
+                            onChange={this.onChange}
                             />
                         </div>
 
@@ -56,8 +41,8 @@ import React, { Component } from 'react'
                             placeholder="Enter Email ..." 
                             name="email" 
                             id=""
-                            defaultValue ={email}
-                            ref={this.emailInput}
+                            value ={email}
+                            onChange={this.onChange}
 
                             />
                         </div>
@@ -69,9 +54,8 @@ import React, { Component } from 'react'
                             placeholder="Enter Phone..." 
                             name="phone" 
                             id=""
-                            defaultValue ={phone}
-                            ref={this.phoneInput}
-
+                            value ={phone}
+                            onChange={this.onChange}
                             />
                         </div>
                         <input type="submit" value="Add Contact"
