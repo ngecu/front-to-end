@@ -7,6 +7,12 @@ import React, { Component } from 'react'
          phone: ''
      }
 
+     onChange = (e) => this.setState({[e.target.name]:e.target.value})
+
+     onSubmit = (e) => {
+         e.preventDefault();
+         console.log(this.state)
+     }
     render() {
         const {name,email,phone} = this.state;
         return (
@@ -15,7 +21,7 @@ import React, { Component } from 'react'
                     Add Contact
                 </div>
                 <div className="card-body">
-                    <form action="">
+                    <form action="" onSubmit={this.onSubmit}>
                         <div className="form-group">
                             <label htmlFor="name">Name</label>
                             <input type="text"
@@ -24,6 +30,7 @@ import React, { Component } from 'react'
                             name="name" 
                             id=""
                             value ={name}
+                            onChange={this.onChange}
                             />
                         </div>
 
@@ -35,6 +42,8 @@ import React, { Component } from 'react'
                             name="email" 
                             id=""
                             value ={email}
+                            onChange={this.onChange}
+
                             />
                         </div>
 
@@ -46,7 +55,7 @@ import React, { Component } from 'react'
                             name="phone" 
                             id=""
                             value ={phone}
-                            
+                            onChange={this.onChange}
                             />
                         </div>
                         <input type="submit" value="Add Contact"
