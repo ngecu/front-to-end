@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import {Consumer} from '../../Context'
 import {v4 as uuid} from 'uuid'
 import TextInputGroup from '../layout/TextInputGroup';
- class AddContact extends Component {
+
+class AddContact extends Component {
      state = {
          name : '',
          email: '',
-         phone: ''
+         phone: '',
+         errors:{}
      }
 
      onChange = (e) => this.setState({[e.target.name]:e.target.value})
@@ -14,6 +16,23 @@ import TextInputGroup from '../layout/TextInputGroup';
      onSubmit = (dispatch,e) => {
          e.preventDefault();
          const {name,email,phone} = this.state;
+
+
+         //check for errors
+         if (name === ' ') {
+             this.setState({errors:{name:'Name is required'}});
+             return;
+         }
+         if (phone === ' ') {
+            this.setState({errors:{phone:'Phone No. is required'}});
+            return;
+
+        }
+
+        if (email === ' ') {
+            this.setState({errors:{email:'Email is required'}});
+            return;
+        }
 
          const newContact = {
             id: uuid(),
@@ -28,11 +47,12 @@ import TextInputGroup from '../layout/TextInputGroup';
              name: '',
              email: '',
              phone: '',
+             errors:{}
 
          })
      }
     render() {
-        const {name,email,phone} = this.state;
+        const {name,email,phone,errors} = this.state;
 
         return (
             <Consumer>
@@ -51,7 +71,7 @@ import TextInputGroup from '../layout/TextInputGroup';
                                 placeholder="Enter Name...."
                                 value = {name}
                                 onChange={this.onChange}
-
+                                error={errors.name}
                               />
           <TextInputGroup
                                 label="Email"
@@ -59,6 +79,7 @@ import TextInputGroup from '../layout/TextInputGroup';
                                 placeholder="Enter Email...."
                                 value = {email}
                                 onChange={this.onChange}
+                                error={errors.email}
 
                               />
                                 <TextInputGroup
@@ -67,6 +88,7 @@ import TextInputGroup from '../layout/TextInputGroup';
                                 placeholder="Enter Phone...."
                                 value = {phone}
                                 onChange={this.onChange}
+                                error={errors.phone}
 
                               />
                                 <input type="submit" value="Add Contact"
