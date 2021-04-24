@@ -19,18 +19,19 @@ class AddContact extends Component {
 
 
          //check for errors
-         if (name === ' ') {
+         if (name === '') {
              this.setState({errors:{name:'Name is required'}});
              return;
          }
-         if (phone === ' ') {
-            this.setState({errors:{phone:'Phone No. is required'}});
-            return;
+        
 
+        if (email === '') {
+            this.setState({errors:{email:'Email is required'}});
+            return;
         }
 
-        if (email === ' ') {
-            this.setState({errors:{email:'Email is required'}});
+        if (phone === '') {
+            this.setState({errors:{phone:'Phone No. is required'}});
             return;
         }
 
